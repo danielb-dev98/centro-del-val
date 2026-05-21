@@ -1,0 +1,2733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Centro Del Val — Fisioterapia y bienestar en Ciudad Lineal · Madrid</title>
+<meta name="description" content="Más de 20 años devolviendo el movimiento a Madrid. Fisioterapia deportiva, osteopatía, acupuntura, Pilates y masaje terapéutico en Ciudad Lineal." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+  /* ─────────── TOKENS ─────────── */
+  :root {
+    --cream:       #f4ede0;
+    --cream-soft:  #faf6ee;
+    --cream-deep:  #e7dcc5;
+    --forest:      #1a2c24;
+    --forest-2:    #233f33;
+    --moss:        #3a5a48;
+    --amber:       #d97640;
+    --amber-deep:  #b85a2c;
+    --ink:         #1c1815;
+    --ink-2:       #4a423a;
+    --ink-3:       #7a6f63;
+    --line:        rgba(28, 24, 21, 0.12);
+    --line-light:  rgba(28, 24, 21, 0.07);
+
+    --sans: "Space Grotesk", system-ui, sans-serif;
+    --serif: "Instrument Serif", "Times New Roman", serif;
+
+    --max: 1320px;
+    --gutter: clamp(20px, 4vw, 56px);
+
+    --r-sm: 6px;
+    --r-md: 14px;
+    --r-lg: 22px;
+    --r-xl: 32px;
+
+    --shadow-sm: 0 2px 8px -2px rgba(26,44,36,0.10);
+    --shadow-md: 0 8px 28px -8px rgba(26,44,36,0.18);
+    --shadow-lg: 0 24px 60px -16px rgba(26,44,36,0.28);
+  }
+
+  /* ─────────── RESET ─────────── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  h1, h2, h3, h4, p { margin: 0; }
+  ::selection { background: var(--amber); color: var(--cream-soft); }
+
+  /* ─────────── PRIMITIVES ─────────── */
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
+  .eyebrow.no-line::before { display: none; }
+  .eyebrow.on-dark { color: rgba(244, 237, 224, 0.7); }
+
+  .h-display {
+    font-family: var(--sans);
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    font-size: clamp(44px, 7vw, 104px);
+    text-wrap: balance;
+  }
+  .h-section {
+    font-family: var(--sans);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.022em;
+    font-size: clamp(36px, 5.2vw, 72px);
+    text-wrap: balance;
+  }
+  .h-sub {
+    font-family: var(--sans);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .italic {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 26px 16px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+    white-space: nowrap;
+  }
+  .btn .arrow {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.18);
+    transition: transform .3s ease;
+  }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .btn-primary {
+    background: var(--amber);
+    color: var(--cream-soft);
+    box-shadow: 0 12px 30px -12px rgba(217, 118, 64, 0.65);
+  }
+  .btn-primary:hover { background: var(--amber-deep); transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(217,118,64,0.7); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost .arrow { background: rgba(28,24,21,0.08); }
+  .btn-ghost:hover { background: var(--cream-soft); border-color: rgba(28,24,21,0.25); }
+  .btn-ghost-light {
+    background: rgba(244,237,224,0.12);
+    color: var(--cream-soft);
+    border: 1px solid rgba(244,237,224,0.28);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .btn-ghost-light:hover { background: rgba(244,237,224,0.22); border-color: rgba(244,237,224,0.45); }
+  .btn-dark {
+    background: var(--forest);
+    color: var(--cream-soft);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-dark:hover { background: var(--forest-2); transform: translateY(-1px); }
+  .btn-light-on-dark {
+    background: var(--cream-soft);
+    color: var(--forest);
+  }
+  .btn-light-on-dark:hover { background: #fff; transform: translateY(-1px); }
+  .btn-light-on-dark .arrow { background: rgba(26,44,36,0.1); }
+
+  /* ─────────── NAV ─────────── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(244, 237, 224, 0.85);
+    backdrop-filter: saturate(150%) blur(14px);
+    -webkit-backdrop-filter: saturate(150%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease, background .3s ease;
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+  .brand-mark {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .brand-mark img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .brand-text { line-height: 1.05; font-size: 15px; }
+  .brand-text small {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+  /* Invert logo image to white on the dark mobile menu overlay */
+  .mobile-menu .brand-mark img {
+    filter: brightness(0) invert(1);
+  }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .nav-links a {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    background: var(--forest);
+    color: var(--cream-soft);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover { background: var(--forest-2); transform: translateY(-1px); }
+  .nav-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color .2s;
+  }
+  .nav-phone:hover { color: var(--amber-deep); }
+  .nav-phone svg { width: 14px; height: 14px; }
+  .nav-burger { display: none; }
+  @media (max-width: 900px) {
+    .nav-links, .nav-phone { display: none; }
+    .nav-burger {
+      display: inline-flex;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      align-items: center; justify-content: center;
+      border: 1px solid var(--line);
+      transition: background .2s;
+    }
+    .nav-burger:hover { background: var(--cream-deep); }
+    .nav-burger svg { width: 18px; height: 18px; }
+  }
+
+  /* ─────────── MOBILE MENU ─────────── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--forest);
+    padding: 24px var(--gutter) 36px;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-shrink: 0;
+  }
+  .mobile-menu-close {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,237,224,0.2);
+    display: grid; place-items: center;
+    color: var(--cream-soft);
+    transition: background .2s, border-color .2s;
+  }
+  .mobile-menu-close:hover { background: rgba(244,237,224,0.1); border-color: rgba(244,237,224,0.4); }
+  .mobile-menu-close svg { width: 20px; height: 20px; }
+  .mobile-menu nav ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: grid;
+    gap: 0;
+  }
+  .mobile-menu nav ul li a {
+    display: block;
+    font-size: clamp(26px, 6vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--cream-soft);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(244,237,224,0.1);
+    transition: color .2s, padding-left .2s;
+  }
+  .mobile-menu nav ul li a:hover { color: var(--amber); padding-left: 8px; }
+  .mobile-menu-footer {
+    margin-top: auto;
+    padding-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-menu-footer .phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(244,237,224,0.7);
+    transition: color .2s;
+  }
+  .mobile-menu-footer .phone-link:hover { color: var(--cream-soft); }
+  .mobile-menu-footer .phone-link svg { width: 18px; height: 18px; }
+
+  /* ─────────── HERO — FULL BLEED ─────────── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    height: 100svh;
+    max-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(20px, 3vw, 48px) 0 clamp(32px, 4vw, 56px);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 35%;
+    animation: heroZoom 14s ease forwards;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1.00); }
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(18,32,22,0.96) 0%,
+      rgba(18,32,22,0.90) 28%,
+      rgba(18,32,22,0.60) 55%,
+      rgba(18,32,22,0.12) 78%,
+      rgba(18,32,22,0.00) 100%
+    );
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+    padding: 0 clamp(24px, 5vw, 80px) clamp(32px, 5vw, 56px);
+    max-width: 760px;
+    margin: 0;
+  }
+  .hero-copy { max-width: 600px; }
+  .hero-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: rgba(244,237,224,0.72);
+  }
+  .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(244,237,224,0.45); }
+  .hero-meta .stars { color: var(--amber); letter-spacing: 2px; }
+  .hero h1 {
+    color: var(--cream-soft);
+    font-size: clamp(28px, 4vw, 62px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    max-width: 14ch;
+    margin-bottom: 20px;
+  }
+  .hero h1 .accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+  }
+  .hero h1 .underline {
+    background: linear-gradient(transparent 78%, rgba(217,118,64,0.55) 78%, rgba(217,118,64,0.55) 96%, transparent 96%);
+    padding: 0 4px;
+  }
+  .hero-sub {
+    font-size: clamp(14px, 1.1vw, 16px);
+    color: rgba(244,237,224,0.82);
+    max-width: 46ch;
+    line-height: 1.5;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 32px;
+  }
+  .hero-stat-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 44px;
+    max-width: 460px;
+    background: rgba(244,237,224,0.10);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(244,237,224,0.18);
+    border-radius: var(--r-lg);
+    padding: 18px 26px;
+  }
+  .hero-stat-card .stat-big {
+    font-size: clamp(26px, 2.8vw, 36px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--cream-soft);
+  }
+  .hero-stat-card .stat-label {
+    font-size: 12px;
+    color: rgba(244,237,224,0.65);
+    line-height: 1.38;
+    max-width: 15ch;
+    margin-top: 4px;
+  }
+  .hero-stat-card .vsep {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(244,237,224,0.18);
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: rgba(26,44,36,0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgba(244,237,224,0.88);
+    padding: 7px 14px 7px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    border: 1px solid rgba(244,237,224,0.18);
+  }
+  .hero-tag .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #6ed29c;
+    box-shadow: 0 0 0 0 rgba(110,210,156,0.7);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(110,210,156,0.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(110,210,156,0); }
+    100% { box-shadow: 0 0 0 0 rgba(110,210,156,0); }
+  }
+
+  /* ─────────── TRUST BAR ─────────── */
+  .trust {
+    background: var(--forest);
+    padding: clamp(28px, 4vw, 48px) 0;
+  }
+  .trust-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .trust-item .ico-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(217,118,64,0.15);
+    display: grid;
+    place-items: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .trust-item svg {
+    width: 28px; height: 28px;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+  .trust-item .t-num {
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--cream-soft);
+    margin-bottom: 6px;
+  }
+  .trust-item .t-label {
+    font-size: 13px;
+    color: rgba(244,237,224,0.65);
+    line-height: 1.35;
+    max-width: 20ch;
+  }
+  @media (max-width: 800px) {
+    .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .trust-item { padding: 16px; border-bottom: 1px solid rgba(244,237,224,0.08); }
+    .trust-item:nth-child(3), .trust-item:nth-child(4) { border-bottom: none; }
+  }
+  @media (max-width: 480px) {
+    .trust-inner { grid-template-columns: 1fr; gap: 0; }
+    .trust-item { border-bottom: 1px solid rgba(244,237,224,0.08) !important; padding: 16px 0; }
+    .trust-item:last-child { border-bottom: none !important; }
+  }
+
+  /* ─── Trust bar scroll animation ─── */
+  @keyframes trustItemIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .trust-item {
+    opacity: 0;
+  }
+  .trust.in-view .trust-item {
+    animation: trustItemIn .55s cubic-bezier(.22,1,.36,1) both;
+  }
+  .trust.in-view .trust-item:nth-child(1) { animation-delay: 0ms; }
+  .trust.in-view .trust-item:nth-child(2) { animation-delay: 80ms; }
+  .trust.in-view .trust-item:nth-child(3) { animation-delay: 160ms; }
+  .trust.in-view .trust-item:nth-child(4) { animation-delay: 240ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .trust-item { opacity: 1; }
+    .trust.in-view .trust-item { animation: none; }
+  }
+
+  /* ─────────── SECTION SHELL ─────────── */
+  .section { padding: clamp(70px, 9vw, 140px) 0; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: clamp(40px, 5vw, 72px);
+    align-items: end;
+  }
+  .section-head .lede {
+    font-size: clamp(15px, 1.2vw, 17px);
+    color: var(--ink-2);
+    max-width: 48ch;
+    line-height: 1.6;
+  }
+  @media (max-width: 800px) {
+    .section-head { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  /* ─────────── PROBLEM / SOLUTION ─────────── */
+  .ps {
+    background: var(--cream-soft);
+    border-top: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+    padding: clamp(50px, 6vw, 90px) 0;
+  }
+  .ps .h-section { font-size: clamp(28px, 3.2vw, 48px); line-height: 1.05; }
+  .ps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 4vw, 64px);
+    align-items: start;
+  }
+  @media (max-width: 900px) { .ps-grid { grid-template-columns: 1fr; } }
+  .ps-block .quote-mark {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 72px;
+    line-height: 0.7;
+    color: var(--amber);
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .ps-questions p {
+    font-size: clamp(16px, 1.6vw, 22px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    color: var(--ink);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .ps-questions p:first-of-type { border-top: 1px solid var(--line); }
+  .ps-questions p .q {
+    display: inline-block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+    margin-right: 12px;
+  }
+  .ps-answer {
+    background: var(--forest);
+    color: var(--cream-soft);
+    border-radius: var(--r-lg);
+    padding: clamp(22px, 3vw, 36px);
+    position: sticky;
+    top: 100px;
+  }
+  .ps-answer .eyebrow { color: rgba(244,237,224,0.6); }
+  .ps-answer h3 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 12px 0 14px;
+  }
+  .ps-answer h3 .italic { color: #d2c7ad; }
+  .ps-answer p {
+    font-size: 15px;
+    color: rgba(244,237,224,0.75);
+    line-height: 1.6;
+  }
+  .ps-pillars {
+    margin-top: 20px;
+    display: grid;
+    gap: 0;
+  }
+  .ps-pillar {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-bottom: 4px;
+    border-top: 1px solid rgba(244,237,224,0.15);
+  }
+  .ps-pillar .num {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--amber);
+    font-size: 20px;
+    line-height: 1;
+    min-width: 28px;
+  }
+  .ps-pillar h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .ps-pillar p { font-size: 13px; color: rgba(244,237,224,0.65); line-height: 1.45; }
+
+  /* ─────────── SERVICES — SINGLE CAROUSEL ─────────── */
+  .svc-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: clamp(28px, 3.5vw, 44px);
+    flex-wrap: wrap;
+  }
+  .svc-head-copy { flex: 1; min-width: 0; }
+  .svc-nav { display: flex; gap: 8px; flex-shrink: 0; padding-bottom: 4px; }
+  .svc-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0 12px;
+    scrollbar-width: none;
+  }
+  .svc-track::-webkit-scrollbar { display: none; }
+  .svc-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: var(--cream-soft);
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .svc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .svc-card-img {
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    background: var(--cream-deep);
+    flex-shrink: 0;
+  }
+  .svc-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+    display: block;
+  }
+  .svc-card:hover .svc-card-img img { transform: scale(1.06); }
+  .svc-card-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+    border-top: 2px solid transparent;
+    transition: border-color .25s;
+  }
+  .svc-card:hover .svc-card-body { border-top-color: var(--amber); }
+  .svc-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+  .svc-card .svc-hook {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin: 0;
+  }
+  .svc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--cream-soft);
+    background: var(--amber);
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    text-decoration: none;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    width: fit-content;
+    margin-top: auto;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px -8px rgba(217,118,64,0.55);
+  }
+  .svc-cta:hover { background: var(--amber-deep); transform: translateY(-1px); box-shadow: 0 12px 24px -8px rgba(217,118,64,0.65); }
+  .svc-more {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--moss);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+    transition: color .2s;
+  }
+  .svc-more:hover { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+  .svc-more-arrow {
+    display: inline-block;
+    transition: transform .3s ease;
+    line-height: 1;
+  }
+  .svc-card.open .svc-more-arrow { transform: rotate(180deg); }
+  .svc-expand {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+  }
+  .svc-expand p {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 10px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--line-light);
+  }
+  .svc-card.open .svc-expand { max-height: 500px; }
+  .svc-progress {
+    display: flex;
+    gap: 5px;
+    margin-top: 18px;
+  }
+  .svc-progress-dot {
+    width: 20px; height: 3px;
+    border-radius: 2px;
+    background: var(--line);
+    transition: background .3s, width .3s;
+  }
+  .svc-progress-dot.active { width: 32px; background: var(--amber); }
+  .carousel-nav { display: flex; gap: 10px; }
+  .carousel-btn {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    display: grid; place-items: center;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background .2s, border-color .2s, transform .2s, color .2s;
+    flex-shrink: 0;
+  }
+  .carousel-btn:hover { background: var(--forest); color: var(--cream-soft); border-color: var(--forest); transform: scale(1.1); }
+  .carousel-btn:disabled { opacity: 0.32; cursor: default; transform: none !important; }
+  .carousel-btn svg { width: 16px; height: 16px; }
+
+  /* ─────────── WHY US ─────────── */
+  .why {
+    background: var(--forest);
+    color: var(--cream-soft);
+    padding: clamp(50px, 6vw, 90px) 0;
+  }
+  .why .eyebrow { color: rgba(244,237,224,0.7); }
+  .why .h-section { color: var(--cream-soft); font-size: clamp(28px, 3.2vw, 48px); line-height: 1.05; }
+  .why .h-section .italic { color: var(--amber); }
+  .why .lede { color: rgba(244,237,224,0.7); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(244,237,224,0.12);
+    border: 1px solid rgba(244,237,224,0.12);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card {
+    background: var(--forest);
+    padding: 24px 22px;
+    transition: background .25s ease;
+  }
+  .why-card:hover { background: var(--forest-2); }
+  .why-card .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 38px;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .why-card h4 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .why-card p {
+    font-size: 13.5px;
+    color: rgba(244,237,224,0.65);
+    line-height: 1.55;
+  }
+  .why-cta {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ─────────── STAT BAND ─────────── */
+  .stats {
+    padding: clamp(50px, 6vw, 90px) 0;
+    background: var(--amber);
+    color: var(--forest);
+  }
+  .stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    justify-items: center;
+  }
+  @media (max-width: 800px) { .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 36px 24px; } }
+  .stat {
+    text-align: center;
+  }
+  .stat .num {
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .stat .num .small { font-size: 0.5em; vertical-align: super; }
+  .stat .lbl {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.35;
+    max-width: 22ch;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* ─────────── TESTIMONIALS — CAROUSEL ─────────── */
+  #testimonios { padding: clamp(50px, 6vw, 90px) 0; }
+  #testimonios .h-section { font-size: clamp(28px, 3.2vw, 48px); line-height: 1.05; }
+  .test-carousel-outer { position: relative; }
+  .test-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .test-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 2px 24px;
+    scrollbar-width: none;
+  }
+  .test-track::-webkit-scrollbar { display: none; }
+  .test-card {
+    flex: 0 0 calc(33.333% - 14px);
+    scroll-snap-align: start;
+    background: var(--cream-soft);
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-lg);
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .test-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .test-card.featured {
+    flex: 0 0 calc(50% - 10px);
+    background: var(--forest);
+    color: var(--cream-soft);
+    border-color: transparent;
+    box-shadow: var(--shadow-lg);
+  }
+  .test-stars { color: var(--amber); letter-spacing: 2px; font-size: 14px; }
+  .test-quote {
+    font-size: 14.5px;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    flex-grow: 1;
+  }
+  .test-card.featured .test-quote {
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.32;
+    color: var(--cream-soft);
+  }
+  .test-card.featured .test-quote .italic { color: #d2c7ad; }
+  .test-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-light);
+  }
+  .test-card.featured .test-author { border-top-color: rgba(244,237,224,0.18); }
+  .test-author .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--cream-deep);
+    color: var(--forest);
+    display: grid; place-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+  .test-card.featured .avatar { background: var(--amber); color: var(--forest); }
+  .test-author .name { font-weight: 600; font-size: 14.5px; line-height: 1.2; }
+  .test-author .meta { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+  .test-card.featured .test-author .meta { color: rgba(244,237,224,0.6); }
+  .test-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .test-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--cream-deep);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background .25s, transform .25s;
+  }
+  .test-dot.active { background: var(--forest); transform: scale(1.4); }
+  .test-dot:hover:not(.active) { background: var(--ink-3); }
+  @media (max-width: 900px) {
+    .test-card { flex: 0 0 calc(50% - 10px); }
+    .test-card.featured { flex: 0 0 calc(80% - 10px); }
+  }
+  @media (max-width: 600px) {
+    .svc-card { flex: 0 0 85vw; }
+    .svc-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .svc-nav { align-self: flex-end; }
+    .test-card { flex: 0 0 88%; }
+    .test-card.featured { flex: 0 0 88%; }
+  }
+  @media (hover: none) {
+    .svc-card:hover { transform: none; box-shadow: none; }
+    .svc-card:hover .svc-card-img img { transform: none; }
+    .svc-card:hover .svc-card-body { border-top-color: transparent; }
+    .svc-cta:hover { background: var(--amber); transform: none; box-shadow: 0 8px 20px -8px rgba(217,118,64,0.55); }
+    .carousel-btn:hover { background: var(--cream); color: var(--ink); border-color: var(--line); transform: none; }
+  }
+
+  .google-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: var(--cream-soft);
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-md);
+    flex-wrap: wrap;
+  }
+  .google-row .left { display: flex; align-items: center; gap: 16px; }
+  .google-row .g-mark {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid; place-items: center;
+    font-weight: 700;
+    color: var(--forest);
+    font-size: 18px;
+    border: 1px solid var(--line);
+  }
+  .google-row .g-text strong { font-size: 16px; }
+  .google-row .g-text small { display: block; font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+  .google-row .g-stars { color: var(--amber); letter-spacing: 3px; font-size: 18px; }
+
+  /* ─────────── TEAM ─────────── */
+  .team {
+    background: var(--cream-soft);
+    border-top: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+    padding: clamp(50px, 6vw, 90px) 0;
+  }
+  #equipo .h-section { font-size: clamp(28px, 3.2vw, 48px); line-height: 1.05; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .team-photo {
+    aspect-ratio: 4/5;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--cream-deep);
+    position: relative;
+  }
+  .team-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+  }
+  .team-card:hover .team-photo img { transform: scale(1.05); }
+  .team-photo .role-tag {
+    position: absolute;
+    bottom: 12px; left: 12px;
+    padding: 6px 10px;
+    background: rgba(244, 237, 224, 0.94);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .team-name {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .team-role {
+    font-size: 12px;
+    color: var(--ink-2);
+    margin-top: -2px;
+  }
+  .team-quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  /* ─────────── CTA BAND ─────────── */
+  .cta-band {
+    position: relative;
+    isolation: isolate;
+    color: var(--cream-soft);
+    overflow: hidden;
+  }
+  .cta-band-bg {
+    position: absolute; inset: 0; z-index: -2;
+    background: var(--forest);
+  }
+  .cta-band-img {
+    position: absolute; inset: 0; z-index: -1;
+    opacity: 0.28;
+  }
+  .cta-band-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.4) contrast(1.05);
+  }
+  .cta-band-inner {
+    padding: clamp(70px, 9vw, 130px) 0;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-size: clamp(38px, 5vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    text-wrap: balance;
+    margin-bottom: 18px;
+  }
+  .cta-band h2 .italic { color: var(--amber); }
+  .cta-band p {
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: rgba(244,237,224,0.75);
+    max-width: 50ch;
+    margin: 0 auto 36px;
+  }
+  .cta-band .btn-row {
+    display: inline-flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ─────────── PRICING ─────────── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 1000px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .price-card {
+    background: var(--cream-soft);
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-md);
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .price-card:hover { transform: translateY(-2px); border-color: var(--line); }
+  .price-card.featured {
+    background: var(--forest);
+    color: var(--cream-soft);
+    border-color: transparent;
+  }
+  .price-tag-top {
+    position: absolute;
+    top: -10px; left: 24px;
+    background: var(--amber);
+    color: var(--forest);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 5px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .price-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .price-amount {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: var(--forest);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .price-card.featured .price-amount { color: var(--amber); }
+  .price-amount .from {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 2px;
+  }
+  .price-card.featured .price-amount .from { color: rgba(244,237,224,0.5); }
+  .price-amount .currency { font-size: 22px; font-weight: 600; }
+  .price-card .save {
+    font-size: 13px;
+    color: var(--amber-deep);
+    font-weight: 600;
+  }
+  .price-card.featured .save { color: var(--amber); }
+  .price-card ul {
+    list-style: none;
+    padding: 0; margin: 8px 0 0;
+    display: grid;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+  .price-card.featured ul { color: rgba(244,237,224,0.7); }
+  .price-card ul li {
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .price-card ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 7px;
+    width: 8px; height: 4px;
+    border-left: 2px solid var(--moss);
+    border-bottom: 2px solid var(--moss);
+    transform: rotate(-45deg);
+  }
+  .price-card.featured ul li::before { border-color: var(--amber); }
+  .pricing-note {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--cream-deep);
+    border-radius: var(--r-md);
+    font-size: 14px;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .pricing-note svg { width: 20px; height: 20px; color: var(--forest); flex-shrink: 0; }
+  .pricing-note strong { color: var(--ink); }
+
+  /* ─────────── CONTACT ─────────── */
+  #contacto { padding: clamp(50px, 6vw, 90px) 0; }
+  #contacto .h-section { font-size: clamp(28px, 3.2vw, 48px); line-height: 1.05; }
+  #contacto .section-head .lede { font-size: clamp(13px, 1vw, 15px); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(40px, 5vw, 70px);
+    align-items: start;
+  }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-info > .h-sub { margin-bottom: 8px; }
+  .contact-info > p { color: var(--ink-2); margin-bottom: 28px; }
+  .info-row {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .info-row:first-of-type { border-top: 1px solid var(--line-light); }
+  .info-row .ico {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--cream-deep);
+    display: grid; place-items: center;
+    color: var(--forest);
+    flex-shrink: 0;
+  }
+  .info-row .ico svg { width: 18px; height: 18px; }
+  .info-row .label {
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .info-row .value {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .info-row .value a:hover { color: var(--amber-deep); }
+  .info-row .sub-value {
+    font-size: 12px;
+    color: var(--ink-2);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .map-wrap {
+    margin-top: 16px;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    aspect-ratio: 21/9;
+    background: var(--cream-deep);
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+
+  .form {
+    background: var(--forest);
+    color: var(--cream-soft);
+    padding: clamp(20px, 3vw, 32px);
+    border-radius: var(--r-lg);
+  }
+  .form h3 {
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .form h3 .italic { color: var(--amber); }
+  .form .form-lede {
+    color: rgba(244,237,224,0.7);
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+  .field {
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .field label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(244,237,224,0.6);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(244, 237, 224, 0.07);
+    border: 1px solid rgba(244, 237, 224, 0.15);
+    border-radius: 10px;
+    color: var(--cream-soft);
+    font: inherit;
+    font-size: 15px;
+    transition: border-color .2s, background .2s;
+  }
+  .field textarea { min-height: 96px; resize: vertical; font-family: var(--sans); }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(244,237,224,0.4); }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+    background: rgba(244,237,224,0.1);
+  }
+  .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23f4ede0' opacity='0.5' d='M1 1l5 5 5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+  }
+
+  /* ── Custom service dropdown ── */
+  .custom-select { position: relative; }
+  .custom-select-btn {
+    width: 100%;
+    padding: 10px 38px 10px 12px;
+    background: rgba(244,237,224,0.07);
+    border: 1px solid rgba(244,237,224,0.15);
+    border-radius: 10px;
+    color: var(--cream-soft);
+    font: inherit;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color .2s, background .2s;
+  }
+  .custom-select-btn:focus,
+  .custom-select.open .custom-select-btn {
+    outline: none;
+    border-color: var(--amber);
+    background: rgba(244,237,224,0.1);
+  }
+  .custom-select-arrow {
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: transform .2s;
+    margin-left: 8px;
+  }
+  .custom-select.open .custom-select-arrow { transform: rotate(180deg); }
+  .custom-select-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: var(--forest);
+    border: 1px solid rgba(244,237,224,0.15);
+    border-radius: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    z-index: 200;
+    max-height: 260px;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(244,237,224,0.2) transparent;
+  }
+  .custom-select.open .custom-select-list { display: block; }
+  .custom-select-option {
+    padding: 10px 14px;
+    font-size: 15px;
+    color: var(--cream-soft);
+    cursor: pointer;
+    transition: background .12s;
+  }
+  .custom-select-option:hover,
+  .custom-select-option.focused { background: rgba(244,237,224,0.08); }
+  .custom-select-option.selected { color: var(--amber); }
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .form-actions .btn-primary { flex-shrink: 0; }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: rgba(244,237,224,0.08);
+    color: var(--cream-soft);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(244,237,224,0.18);
+    transition: background .2s, border-color .2s;
+  }
+  .whatsapp-link:hover { background: rgba(244,237,224,0.14); border-color: rgba(244,237,224,0.3); }
+  .whatsapp-link svg { width: 18px; height: 18px; color: #6ed29c; }
+  .form-success {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: rgba(110, 210, 156, 0.12);
+    border: 1px solid rgba(110, 210, 156, 0.3);
+    border-radius: 10px;
+    color: #b9e8ce;
+    font-size: 14px;
+    display: none;
+  }
+  .form-success.show { display: block; }
+
+  /* ─────────── FOOTER ─────────── */
+  footer {
+    background: var(--ink);
+    color: var(--cream-soft);
+    padding: 70px 0 30px;
+  }
+  .foot-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(244,237,224,0.12);
+  }
+  @media (max-width: 900px) { .foot-top { grid-template-columns: 1fr 1fr; gap: 36px 24px; } }
+  @media (max-width: 500px) { .foot-top { grid-template-columns: 1fr; } }
+  .foot-brand .h-sub {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .foot-brand .h-sub .italic { color: var(--amber); }
+  .foot-brand p {
+    margin-top: 14px;
+    color: rgba(244,237,224,0.55);
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: 36ch;
+  }
+  .foot-col h5 {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,237,224,0.5);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .foot-col li a {
+    font-size: 14.5px;
+    color: rgba(244,237,224,0.75);
+    transition: color .2s;
+  }
+  .foot-col li a:hover { color: var(--amber); }
+  .foot-bottom {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12.5px;
+    color: rgba(244,237,224,0.45);
+  }
+  .foot-bottom .socials { display: flex; gap: 16px; }
+  .foot-bottom .socials a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,237,224,0.15);
+    display: grid; place-items: center;
+    transition: background .2s, border-color .2s;
+  }
+  .foot-bottom .socials a:hover { background: var(--amber); border-color: var(--amber); color: var(--forest); }
+  .foot-bottom .socials svg { width: 15px; height: 15px; }
+
+  /* ─────────── FLOATING WA ─────────── */
+  .wa-float {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px 13px 16px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 12px 28px -10px rgba(37,211,102,0.5);
+    transition: transform .25s ease;
+  }
+  .wa-float:hover { transform: translateY(-2px); }
+  .wa-float svg { width: 20px; height: 20px; }
+  @media (max-width: 600px) {
+    .wa-float span { display: none; }
+    .wa-float { padding: 14px; }
+  }
+
+  /* ─────────── REVEAL ANIMATIONS ─────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body data-screen-label="Centro Del Val · Landing">
+
+<!-- ═════════════════ NAV ═════════════════ -->
+<header class="nav" id="topnav">
+  <div class="wrap nav-inner">
+    <a href="#" class="brand" aria-label="Centro Del Val — inicio">
+      <span class="brand-mark"><img src="logo-centro-del-val.jpg" alt="" /></span>
+      <span class="brand-text">Centro Del Val<small>Ciudad Lineal · desde 2004</small></span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#porque">Por qué Del Val</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#tarifas">Tarifas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div style="display:flex; gap:14px; align-items:center;">
+      <a href="tel:913135706" class="nav-phone" aria-label="Llamar a la clínica">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        913 13 57 06
+      </a>
+      <a href="#contacto" class="nav-cta">Pide tu cita</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═════════════════ MOBILE MENU ═════════════════ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" role="dialog" aria-label="Menú principal">
+  <div class="mobile-menu-header">
+    <a href="#" class="brand" onclick="closeMobileMenu()">
+      <span class="brand-mark"><img src="logo-centro-del-val.jpg" alt="" /></span>
+      <span class="brand-text" style="color:var(--cream-soft);">Centro Del Val<small style="color:rgba(244,237,224,0.55);">Ciudad Lineal · desde 2004</small></span>
+    </a>
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#servicios" onclick="closeMobileMenu()">Servicios</a></li>
+      <li><a href="#porque" onclick="closeMobileMenu()">Por qué Del Val</a></li>
+      <li><a href="#equipo" onclick="closeMobileMenu()">Equipo</a></li>
+      <li><a href="#tarifas" onclick="closeMobileMenu()">Tarifas</a></li>
+      <li><a href="#contacto" onclick="closeMobileMenu()">Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu-footer">
+    <a href="tel:913135706" class="phone-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      913 13 57 06
+    </a>
+    <a href="#contacto" class="btn btn-primary" onclick="closeMobileMenu()" style="width:fit-content;">
+      Pide tu cita
+      <span class="arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+    </a>
+  </div>
+</div>
+
+<!-- ═════════════════ HERO ═════════════════ -->
+<section class="hero" data-screen-label="Hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=1600&q=80" alt="Sesión de fisioterapia en Centro Del Val" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80'" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy reveal">
+      <span class="hero-tag"><span class="pulse"></span> Citas disponibles esta semana</span>
+      <div class="hero-meta">
+        <span class="stars">★★★★★</span>
+        <span><strong>4,9</strong> · 353 reseñas en Google</span>
+        <span class="dot"></span>
+        <span>Ciudad Lineal, Madrid</span>
+      </div>
+      <h1 class="h-display">
+        Más de 20 años<br>
+        devolviendo el<br>
+        <span class="accent">movimiento</span> a<br>
+        <span class="underline">tu cuerpo</span>.
+      </h1>
+      <p class="hero-sub">
+        Fisioterapia, osteopatía y bienestar en Ciudad Lineal. El mismo equipo, las mismas manos — desde 2004.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">
+          Reserva tu primera sesión
+          <span class="arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+        </a>
+        <a href="#servicios" class="btn btn-ghost-light">Conoce nuestros servicios</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="t-num">4,9 / 5</div>
+        <div class="t-label">353 reseñas en Google</div>
+      </div>
+      <div class="trust-item">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="t-num">+<span data-count="20">0</span> años</div>
+        <div class="t-label">cuidando a Ciudad Lineal</div>
+      </div>
+      <div class="trust-item">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg></div>
+        <div class="t-num"><span data-count="5">0</span> especialistas</div>
+        <div class="t-label">equipo estable que te conoce</div>
+      </div>
+      <div class="trust-item">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="6" r="2"/><path d="M19 13v-2a3 3 0 0 0-3-3h-1.5"/><path d="M9 8H8a3 3 0 0 0-3 3v2"/><circle cx="7" cy="16" r="4"/><path d="M11 16h8"/></svg></div>
+        <div class="t-num">Accesible</div>
+        <div class="t-label">silla de ruedas · aseo adaptado</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════ PROBLEM / SOLUTION ═════════════════ -->
+<section class="section ps" id="dolor">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">El primer paso</span>
+        <h2 class="h-section" style="margin-top:18px;">El dolor no es <span class="italic">normal</span>.<br>Sólo es <span class="italic">familiar</span>.</h2>
+      </div>
+      <p class="lede">Cada cuerpo cuenta una historia. La de tus mañanas rígidas, la del ordenador que no respeta tu cuello, la de la rodilla que cede en el último kilómetro. En Del Val empezamos por escucharla — antes de tratarla.</p>
+    </div>
+
+    <div class="ps-grid">
+      <div class="ps-block reveal">
+        <span class="quote-mark">¿</span>
+        <div class="ps-questions">
+          <p><span class="q">¿</span>Llevas semanas con un dolor de espalda que no se va con paracetamol?</p>
+          <p><span class="q">¿</span>Vuelven las mismas contracturas los lunes por la mañana?</p>
+          <p><span class="q">¿</span>Has pasado por tres fisios y el problema sigue ahí?</p>
+          <p><span class="q">¿</span>El médico te dijo "es estrés" y tú sabes que es algo más?</p>
+          <p><span class="q">¿</span>Quieres volver a correr, jugar, levantar a tu hija — sin pensarlo dos veces?</p>
+        </div>
+      </div>
+
+      <aside class="ps-answer reveal">
+        <span class="eyebrow on-dark">Nuestra manera</span>
+        <h3>No tratamos síntomas.<br><span class="italic">Buscamos la causa.</span></h3>
+        <p>Combinamos tecnología de última generación con el trabajo manual más cercano del barrio. Cada paciente recibe una valoración completa antes de cualquier tratamiento — porque tu hombro no es el hombro del paciente anterior.</p>
+
+        <div class="ps-pillars">
+          <div class="ps-pillar">
+            <span class="num">01</span>
+            <div>
+              <h4>Valoración honesta</h4>
+              <p>Si no podemos ayudarte, te lo decimos. Y te recomendamos a quien sí.</p>
+            </div>
+          </div>
+          <div class="ps-pillar">
+            <span class="num">02</span>
+            <div>
+              <h4>Plan personalizado</h4>
+              <p>Manos, máquinas, ejercicio terapéutico. La combinación exacta que tu cuerpo necesita.</p>
+            </div>
+          </div>
+          <div class="ps-pillar">
+            <span class="num">03</span>
+            <div>
+              <h4>Resultados desde la primera sesión</h4>
+              <p>El 87% de nuestros pacientes nota la diferencia antes de salir por la puerta.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ SERVICES ═════════════════ -->
+<section class="section" id="servicios">
+  <div class="wrap">
+
+    <div class="svc-head reveal">
+      <div class="svc-head-copy">
+        <span class="eyebrow">Qué hacemos</span>
+        <h2 class="h-section" style="margin-top:14px;">Ocho formas de<br>devolverte el <span class="italic">bienestar</span>.</h2>
+      </div>
+      <div class="svc-nav carousel-nav">
+        <button class="carousel-btn" id="svcPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="carousel-btn" id="svcNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="svc-track reveal" id="svcTrack">
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=75" alt="Fisioterapia" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Fisioterapia</h4>
+          <p class="svc-hook">Recuperamos tu movilidad con técnicas manuales y equipos de última generación.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>¿Tu cuerpo lleva semanas diciéndote algo que tú sigues ignorando? La fisioterapia manual identifica qué estructura está fallando — músculo, articulación, nervio — y actúa directamente sobre ello. Sin esperar a que «se pase solo». Combinamos trabajo manual con aparatología de última generación para que notes la diferencia antes de salir por la puerta. Ideal si tienes dolor de espalda, cervicales, lesiones deportivas o llevas tiempo yendo de pastilla en pastilla sin resultado.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=75" alt="Osteopatía" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Osteopatía</h4>
+          <p class="svc-hook">Tratamos la causa, no solo el síntoma. Diagnóstico estructural completo.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>El dolor de cabeza que tienes puede venir de la cadera. En serio. La osteopatía trabaja el cuerpo como un sistema completo, no como piezas sueltas. Buscamos la causa real — no solo apagamos el síntoma. Una sesión incluye valoración postural completa y tratamiento estructural. Para dolores crónicos que no mejoran con fisio convencional, problemas digestivos, mareos, tensión acumulada, o cuando sientes que «algo no encaja» y nadie da con ello.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=75" alt="Masajes terapéuticos" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Masajes terapéuticos</h4>
+          <p class="svc-hook">Descontracturante, deportivo, drenaje linfático y prenatal.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>No es un capricho. Es mantenimiento. Descontracturante, deportivo, drenaje linfático, prenatal — cada masaje tiene un propósito clínico. Trabajan tejido profundo, circulación y sistema nervioso. Si tienes trapecios como piedras, piernas pesadas, o acabas de competir o de parir, esto es para ti. Duración: 50 o 75 minutos.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=75" alt="Terapia Oriental" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Terapia Oriental</h4>
+          <p class="svc-hook">Acupuntura y naturopatía para el equilibrio del cuerpo y la mente.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>Dos mil años de medicina. Criterio occidental. Acupuntura clínica y naturopatía para lo que la medicina convencional no siempre resuelve bien: ansiedad, insomnio, migrañas, dolor crónico, hormigueos, bajadas de energía. No es alternativo — es complementario. Muchos pacientes lo combinan con fisioterapia para resultados más rápidos y duraderos.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1598452963314-b09f397a5c48?w=600&q=75" alt="Estudio de la Pisada" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Estudio de la Pisada</h4>
+          <p class="svc-hook">Análisis biomecánico y plantillas personalizadas.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>Todo empieza en el suelo que pisas. Un análisis biomecánico completo de cómo caminas, corres y te apoyas. Si tienes rodillas que se resienten, fascitis, lumbares que no mejoran o simplemente quieres prevenir — aquí encontramos el origen. Resultado: informe personalizado y plantillas a medida si las necesitas. Una sola sesión puede explicar años de molestias.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=75" alt="Tratamiento Reductor" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Tratamiento Reductor</h4>
+          <p class="svc-hook">Técnicas manuales y aparatología para modelar y drenar.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>Resultados visibles. Sin cirugía, sin milagros. Combinamos técnicas manuales con aparatología profesional para trabajar acumulaciones de grasa localizada, celulitis y flacidez. No es estética pura — trabajamos los tejidos con criterio clínico. Ideal para post-embarazo, cambios hormonales o cuando el ejercicio solo no llega donde necesitas.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=600&q=75" alt="Yoga y Taichi" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Yoga &amp; Taichi</h4>
+          <p class="svc-hook">Clases guiadas para mejorar la flexibilidad, la postura y el estrés.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>Para la cabeza tanto como para el cuerpo. Clases guiadas en grupos pequeños, adaptadas a tu nivel. Mejoran la postura, reducen el cortisol, aumentan la movilidad articular y te enseñan a moverte sin tensión innecesaria. Si tienes estrés crónico, rigidez matutina o simplemente quieres un espacio de desconexión activa — esto funciona.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=75" alt="Pilates" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h4>Pilates</h4>
+          <p class="svc-hook">Con máquinas Reformer. Grupos reducidos. Movimiento que transforma.</p>
+          <button class="svc-more" aria-expanded="false">Saber más <span class="svc-more-arrow">↓</span></button>
+          <div class="svc-expand" aria-hidden="true">
+            <p>Con máquinas Reformer y Trapecio, no en el suelo con una esterilla. Grupos máximo de 4 personas. Ana lleva más de 10 años enseñando Pilates clínico — cada sesión está adaptada a tu cuerpo, no a una clase genérica. Ideal para rehabilitación, embarazo, espalda débil o si quieres fuerza de verdad sin impacto.</p>
+          </div>
+          <a href="#contacto" class="svc-cta">Pedir cita</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="svc-progress" id="svcProgress"></div>
+
+  </div>
+</section>
+
+<!-- ═════════════════ WHY US ═════════════════ -->
+<section class="section why" id="porque">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Por qué Del Val</span>
+        <h2 class="h-section" style="margin-top:18px;">Hay muchos sitios donde<br>tratarte. <span class="italic">Sólo hay uno</span> aquí.</h2>
+      </div>
+      <p class="lede">No somos una franquicia. No tenemos máster en marketing. Tenemos dos décadas tratando a tres generaciones del mismo barrio — y la lista de pacientes que vuelven cada mes lo dice todo.</p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <span class="num">01</span>
+        <h4>Más de 20 años en Ciudad Lineal</h4>
+        <p>No somos una franquicia. Somos tus vecinos. La gente del barrio nos llama por el nombre — y nosotros a ellos también.</p>
+      </article>
+      <article class="why-card reveal">
+        <span class="num">02</span>
+        <h4>Resultados desde la primera sesión</h4>
+        <p>Nuestros pacientes notan la diferencia antes de salir por la puerta. No prometemos magia: prometemos criterio.</p>
+      </article>
+      <article class="why-card reveal">
+        <span class="num">03</span>
+        <h4>Tecnología punta + manos expertas</h4>
+        <p>Máquinas de última generación combinadas con el trabajo manual de toda la vida. La técnica al servicio del tacto.</p>
+      </article>
+      <article class="why-card reveal">
+        <span class="num">04</span>
+        <h4>El mismo equipo que hace una década</h4>
+        <p>Aquí no hay rotación. Cuando vuelves, te trata quien ya conoce tu historia, tu rodilla y tu nivel de tolerancia al dolor.</p>
+      </article>
+      <article class="why-card reveal">
+        <span class="num">05</span>
+        <h4>Precios accesibles para todos</h4>
+        <p>Calidad alta sin precio de clínica premium. Bonos, tarifas familiares y flexibilidad real. Que el dinero no sea el problema.</p>
+      </article>
+      <article class="why-card reveal">
+        <span class="num">06</span>
+        <h4>Deportistas de élite confían aquí</h4>
+        <p>Desde el Club Baloncesto San Blas hasta boxeadores de competición. La misma exigencia para todos los pacientes.</p>
+      </article>
+    </div>
+
+    <div class="why-cta reveal">
+      <a href="#contacto" class="btn btn-primary">Reserva tu valoración gratuita <span class="arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ STATS BAND ═════════════════ -->
+<section class="stats" aria-label="Cifras Del Val">
+  <div class="wrap stats-inner">
+    <div class="stat reveal">
+      <div class="num" data-count="353">0</div>
+      <div class="lbl">Reseñas en Google con valoración media de 4,9★</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span data-count="20">0</span><span class="small">+</span></div>
+      <div class="lbl">Años cuidando del barrio sin cambiar de manos</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span data-count="18">0</span><span class="small">k+</span></div>
+      <div class="lbl">Sesiones realizadas — y contando esta semana</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span data-count="8">0</span></div>
+      <div class="lbl">Especialidades para cuidar tu bienestar</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ TESTIMONIALS ═════════════════ -->
+<section class="section" id="testimonios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">La voz del paciente</span>
+        <h2 class="h-section" style="margin-top:18px;">Lo que dicen los que<br>llevan <span class="italic">años volviendo</span>.</h2>
+      </div>
+      <p class="lede">No te pedimos que nos creas a nosotros. Léelos a ellos — vecinos, deportistas, oficinistas, abuelas. 353 voces que han pasado por nuestra camilla más de una vez.</p>
+    </div>
+
+    <div class="test-carousel-outer reveal">
+      <div class="test-nav-row">
+        <div class="test-dots" id="testDots"></div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="testPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="carousel-btn" id="testNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="test-track" id="testTrack">
+
+        <article class="test-card featured">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">
+            "Llevo más de <span class="italic">veinte años</span> viniendo. Mejoran el rendimiento y el dolor desaparece rápido. Cuando te conocen tanto tiempo, te tratan distinto — y se nota desde la primera sesión hasta la última."
+          </p>
+          <div class="test-author">
+            <div class="avatar">AM</div>
+            <div>
+              <div class="name">Antonio M.</div>
+              <div class="meta">Atletismo veterano · paciente desde 2003</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Soy boxeador élite y siempre que compito paso por las manos de Raúl. Un fenómeno. Sabe leer el cuerpo antes de que tú lo cuentes."</p>
+          <div class="test-author">
+            <div class="avatar">JR</div>
+            <div>
+              <div class="name">Javier R.</div>
+              <div class="meta">Boxeador profesional</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Llevo años viniendo por las contracturas del trabajo. Grandes profesionales, trato excelente, precios buenos. No se me ocurre cambiar."</p>
+          <div class="test-author">
+            <div class="avatar">LT</div>
+            <div>
+              <div class="name">Lucía T.</div>
+              <div class="meta">Oficinista · paciente habitual</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Conozco la clínica desde sus inicios. Desde masajes hasta nutrición y podología — siempre innovando, siempre humanos."</p>
+          <div class="test-author">
+            <div class="avatar">CB</div>
+            <div>
+              <div class="name">Carmen B.</div>
+              <div class="meta">Vecina del barrio</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Como entrenador del Club Baloncesto San Blas llevamos a todo el equipo. Los resultados hablan solos: menos lesiones, recuperaciones más rápidas."</p>
+          <div class="test-author">
+            <div class="avatar">DP</div>
+            <div>
+              <div class="name">David P.</div>
+              <div class="meta">Entrenador C.B. San Blas</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Después de la cesárea no sabía a quién acudir. Montse fue paciente, técnica y muy humana. Volví a sentirme yo en semanas."</p>
+          <div class="test-author">
+            <div class="avatar">SG</div>
+            <div>
+              <div class="name">Sofía G.</div>
+              <div class="meta">Recuperación postparto</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="google-row reveal">
+      <div class="left">
+        <div class="g-mark">G</div>
+        <div class="g-text">
+          <strong>353 reseñas verificadas en Google</strong>
+          <small>Valoración media de 4,9 sobre 5 — actualizada este mes</small>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px;">
+        <div class="g-stars">★★★★★</div>
+        <a href="https://www.google.com/search?q=centro+del+val+ciudad+lineal" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:11px 18px; font-size:13px;">
+          Leerlas todas
+          <span class="arrow">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ TEAM ═════════════════ -->
+<section class="section team" id="equipo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Las manos detrás</span>
+        <h2 class="h-section" style="margin-top:18px;">Las mismas caras,<br>año tras año. <span class="italic">A propósito.</span></h2>
+      </div>
+      <p class="lede">Nuestro equipo no rota. Algunos llevan aquí más de quince años. Por eso cuando vuelves, no empiezas de cero — sigues donde lo dejaste, con quien ya sabe leer tu cuerpo.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Raúl, director y fisioterapeuta deportivo" loading="lazy" />
+          <span class="role-tag">Director</span>
+        </div>
+        <div class="team-name">Raúl</div>
+        <div class="team-role">Fisioterapeuta deportivo</div>
+        <p class="team-quote">"Más de veinte años devolviendo el movimiento — y todavía aprendo algo nuevo cada semana."</p>
+      </article>
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80" alt="Montse, especialista en terapia manual y osteopatía" loading="lazy" />
+          <span class="role-tag">Osteopatía</span>
+        </div>
+        <div class="team-name">Montse</div>
+        <div class="team-role">Terapia manual · osteopatía</div>
+        <p class="team-quote">"Cada cuerpo tiene su historia. Mi trabajo empieza por escucharla."</p>
+      </article>
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80" alt="Dani, acupuntura y masaje terapéutico" loading="lazy" />
+          <span class="role-tag">Acupuntura</span>
+        </div>
+        <div class="team-name">Dani</div>
+        <div class="team-role">Acupuntura · masaje terapéutico</div>
+        <p class="team-quote">"Las agujas y las manos. Dos herramientas, una sola intención: liberar."</p>
+      </article>
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&q=80" alt="Ana, instructora de Pilates" loading="lazy" />
+          <span class="role-tag">Pilates</span>
+        </div>
+        <div class="team-name">Ana</div>
+        <div class="team-role">Instructora de Pilates</div>
+        <p class="team-quote">"El movimiento consciente transforma. Sólo hay que volver a aprenderlo."</p>
+      </article>
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Marta, fisioterapeuta" loading="lazy" />
+          <span class="role-tag">Fisioterapia</span>
+        </div>
+        <div class="team-name">Marta Blanco</div>
+        <div class="team-role">Fisioterapia general</div>
+        <p class="team-quote">"Resultados desde la primera sesión. Siempre. Es la única manera de trabajar."</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ CTA BAND ═════════════════ -->
+<section class="cta-band" data-screen-label="CTA mid">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80" alt="" loading="lazy" /></div>
+  <div class="wrap cta-band-inner reveal">
+    <span class="eyebrow on-dark no-line" style="justify-content:center;">Reserva tu primera visita</span>
+    <h2 style="margin-top:14px;">Tu cuerpo lleva<br>demasiado tiempo <span class="italic">esperando</span>.</h2>
+    <p>Primera valoración incluida con cualquier tratamiento. Sin compromiso, sin letra pequeña, sin venderte un bono al salir.</p>
+    <div class="btn-row">
+      <a href="#contacto" class="btn btn-light-on-dark">
+        Reservar ahora
+        <span class="arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </a>
+      <a href="tel:913135706" class="btn" style="background:transparent; color:var(--cream-soft); border:1px solid rgba(244,237,224,0.3);">
+        O llámanos · 913 13 57 06
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ PRICING ═════════════════ -->
+<section class="section" id="tarifas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Tarifas y bonos</span>
+        <h2 class="h-section" style="margin-top:18px;">Calidad alta.<br><span class="italic">Precio justo.</span></h2>
+      </div>
+      <p class="lede">No tenemos planes premium, ni tarifas confusas, ni cargos sorpresa. Tres bonos sencillos y una sesión suelta. Tú decides cómo cuidarte.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <article class="price-card reveal">
+        <h4>Sesión suelta</h4>
+        <div class="price-amount"><span class="from">desde</span>45<span class="currency">€</span></div>
+        <p style="font-size:13px; color:var(--ink-2); margin-top:4px;">Fisioterapia, osteopatía o terapia manual. 50 minutos.</p>
+        <ul>
+          <li>Valoración inicial incluida</li>
+          <li>Sin compromiso ni paquetes</li>
+        </ul>
+      </article>
+
+      <article class="price-card reveal">
+        <h4>Bono 5 sesiones</h4>
+        <div class="price-amount">195<span class="currency">€</span></div>
+        <p class="save">Ahorras 30€ frente a sesión suelta</p>
+        <ul>
+          <li>Caducidad 4 meses</li>
+          <li>Compartible con familia directa</li>
+          <li>Cambios sin coste</li>
+        </ul>
+      </article>
+
+      <article class="price-card featured reveal">
+        <span class="price-tag-top">El más elegido</span>
+        <h4>Bono 10 sesiones</h4>
+        <div class="price-amount">370<span class="currency">€</span></div>
+        <p class="save">Ahorras 80€ frente a sesión suelta</p>
+        <ul>
+          <li>Caducidad 8 meses</li>
+          <li>Compartible con familia directa</li>
+          <li>Incluye 1 sesión de Pilates de regalo</li>
+          <li>Prioridad en reservas</li>
+        </ul>
+      </article>
+
+      <article class="price-card reveal">
+        <h4>Masaje terapéutico</h4>
+        <div class="price-amount"><span class="from">desde</span>35<span class="currency">€</span></div>
+        <p style="font-size:13px; color:var(--ink-2); margin-top:4px;">Descontracturante, deportivo, prenatal, drenaje linfático.</p>
+        <ul>
+          <li>50 o 75 minutos</li>
+          <li>Combinable con bonos</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="pricing-note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <div>
+        <strong>Tarifas accesibles para todos.</strong> Consulta condiciones especiales para familias numerosas, jubilados y deportistas federados — llámanos al 913 13 57 06 o pásate sin cita previa.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ CONTACT ═════════════════ -->
+<section class="section ps" id="contacto" style="background:var(--cream);" data-screen-label="Contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Contacto</span>
+        <h2 class="h-section" style="margin-top:18px;">Pasa a vernos.<br>O escríbenos <span class="italic">ahora mismo</span>.</h2>
+      </div>
+      <p class="lede">Estamos a tres minutos del metro Pueblo Nuevo. Sin escalones, con aseo adaptado, café para la espera. La primera visita siempre incluye valoración — vengas con dolor o vengas a prevenirlo.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info reveal">
+        <div class="info-row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div style="flex-grow:1;">
+            <div class="label">Dónde estamos</div>
+            <div class="value">C. del Idioma Esperanto, 20 · Local 2</div>
+            <div class="sub-value">Ciudad Lineal · 28017 Madrid · Metro Pueblo Nuevo</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div style="flex-grow:1;">
+            <div class="label">Teléfono</div>
+            <div class="value"><a href="tel:913135706">913 13 57 06</a></div>
+            <div class="sub-value">Cogemos siempre. Si no, te devolvemos la llamada en el mismo día.</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div style="flex-grow:1;">
+            <div class="label">Horario</div>
+            <div class="value">Lunes a viernes · 09:00 – 21:00</div>
+            <div class="sub-value">Sábados con cita previa. Festivos cerrado.</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+          <div style="flex-grow:1;">
+            <div class="label">Síguenos</div>
+            <div class="value">@centrodelval · Instagram & Facebook</div>
+            <div class="sub-value">Consejos de recuperación, vídeos del equipo y promociones del barrio.</div>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-3.6555%2C40.4378%2C-3.6435%2C40.4458&amp;layer=mapnik&amp;marker=40.4418%2C-3.6495"
+            loading="lazy"
+            title="Mapa de Centro Del Val en Ciudad Lineal, Madrid"></iframe>
+        </div>
+      </div>
+
+      <form class="form reveal" id="bookingForm" novalidate>
+        <h3>Cuéntanos<br>qué te <span class="italic">pasa</span>.</h3>
+        <p class="form-lede">Rellena dos minutos. Te llamamos hoy mismo para confirmar la cita con quien mejor se ajuste a tu caso.</p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Nombre</label>
+            <input id="f-name" name="name" type="text" required placeholder="Cómo te llamamos" />
+          </div>
+          <div class="field">
+            <label for="f-phone">Teléfono</label>
+            <input id="f-phone" name="phone" type="tel" required placeholder="613 12 34 56" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label id="f-service-label">¿Qué necesitas?</label>
+          <div class="custom-select" id="f-service-wrapper">
+            <button type="button" class="custom-select-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="f-service-label">
+              <span class="custom-select-value">Aún no lo sé — necesito una valoración</span>
+              <svg class="custom-select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="custom-select-list" role="listbox" aria-label="¿Qué necesitas?">
+              <li class="custom-select-option selected" role="option" data-value="Aún no lo sé — necesito una valoración">Aún no lo sé — necesito una valoración</li>
+              <li class="custom-select-option" role="option" data-value="Fisioterapia">Fisioterapia</li>
+              <li class="custom-select-option" role="option" data-value="Osteopatía">Osteopatía</li>
+              <li class="custom-select-option" role="option" data-value="Masajes terapéuticos">Masajes terapéuticos</li>
+              <li class="custom-select-option" role="option" data-value="Terapia Oriental">Terapia Oriental</li>
+              <li class="custom-select-option" role="option" data-value="Estudio de la Pisada">Estudio de la Pisada</li>
+              <li class="custom-select-option" role="option" data-value="Drenaje Linfático">Drenaje Linfático</li>
+              <li class="custom-select-option" role="option" data-value="Tratamiento Reductor">Tratamiento Reductor</li>
+              <li class="custom-select-option" role="option" data-value="Yoga &amp; Taichi">Yoga &amp; Taichi</li>
+              <li class="custom-select-option" role="option" data-value="Pilates">Pilates</li>
+              <li class="custom-select-option" role="option" data-value="Otra consulta">Otra consulta</li>
+            </ul>
+            <input type="hidden" name="service" value="Aún no lo sé — necesito una valoración">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-msg">Cuéntanos un poco más (opcional)</label>
+          <textarea id="f-msg" name="message" placeholder="Llevo tres semanas con dolor en la lumbar al levantarme..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            Pide tu cita
+            <span class="arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+          </button>
+          <a href="https://wa.me/34616211796" target="_blank" rel="noopener" class="whatsapp-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.4c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            WhatsApp directo
+          </a>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          ¡Gracias! Hemos recibido tu mensaje. Te llamamos hoy mismo para confirmar tu cita.
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════ FOOTER ═════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="h-sub">Centro <span class="italic">Del Val</span></div>
+        <p>Fisioterapia, osteopatía y bienestar en Ciudad Lineal. Más de dos décadas devolviendo el movimiento a Madrid — una sesión cada vez.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#servicios">Fisioterapia</a></li>
+          <li><a href="#servicios">Osteopatía</a></li>
+          <li><a href="#servicios">Acupuntura</a></li>
+          <li><a href="#servicios">Pilates</a></li>
+          <li><a href="#servicios">Masajes</a></li>
+          <li><a href="#servicios">Nutrición</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Clínica</h5>
+        <ul>
+          <li><a href="#porque">Por qué Del Val</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#tarifas">Tarifas y bonos</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Cómo llegar</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="tel:913135706">913 13 57 06</a></li>
+          <li><a href="https://wa.me/34616211796" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://instagram.com/centrodelval" target="_blank" rel="noopener">@centrodelval</a></li>
+          <li>C. Idioma Esperanto 20</li>
+          <li>28017 · Madrid</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Centro de Terapia Naturales Del Val · Aviso legal · Política de privacidad · Cookies</div>
+      <div class="socials">
+        <a href="https://instagram.com/centrodelval" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://facebook.com/centroDelVal" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://wa.me/34616211796" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.4c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/34616211796" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.4c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  <span>Escríbenos</span>
+</a>
+
+<script>
+  /* ─── Sticky nav border ─── */
+  const nav = document.getElementById('topnav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ─── Reveal on scroll ─── */
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  /* ─── Trust bar entrance ─── */
+  const trustBar = document.querySelector('.trust');
+  if (trustBar) {
+    const trustObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        trustBar.classList.add('in-view');
+        trustObs.disconnect();
+      }
+    }, { threshold: 0.2 });
+    trustObs.observe(trustBar);
+  }
+
+  /* ─── Count up stats ─── */
+  const counters = document.querySelectorAll('[data-count]');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * eased).toLocaleString('es-ES');
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => countObserver.observe(el));
+
+  /* ─── Custom service dropdown ─── */
+  (function () {
+    const wrapper = document.getElementById('f-service-wrapper');
+    if (!wrapper) return;
+    const btn     = wrapper.querySelector('.custom-select-btn');
+    const list    = wrapper.querySelector('.custom-select-list');
+    const valueEl = wrapper.querySelector('.custom-select-value');
+    const hidden  = wrapper.querySelector('input[type="hidden"]');
+    const options = Array.from(wrapper.querySelectorAll('.custom-select-option'));
+    let focusedIdx = 0;
+
+    function open() {
+      wrapper.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      const sel = options.findIndex(o => o.classList.contains('selected'));
+      focusedIdx = sel >= 0 ? sel : 0;
+      setFocused(focusedIdx);
+    }
+    function close() {
+      wrapper.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      options.forEach(o => o.classList.remove('focused'));
+    }
+    function choose(opt) {
+      const val = opt.dataset.value;
+      valueEl.textContent = val;
+      hidden.value = val;
+      options.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      close();
+      btn.focus();
+    }
+    function setFocused(idx) {
+      options.forEach(o => o.classList.remove('focused'));
+      if (options[idx]) {
+        options[idx].classList.add('focused');
+        options[idx].scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    btn.addEventListener('click', () => wrapper.classList.contains('open') ? close() : open());
+
+    options.forEach((opt, i) => {
+      opt.addEventListener('click', () => choose(opt));
+      opt.addEventListener('mouseenter', () => { focusedIdx = i; setFocused(i); });
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      const isOpen = wrapper.classList.contains('open');
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        isOpen ? (options[focusedIdx] && choose(options[focusedIdx])) : open();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (!isOpen) { open(); return; }
+        focusedIdx = Math.min(focusedIdx + 1, options.length - 1);
+        setFocused(focusedIdx);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!isOpen) { open(); return; }
+        focusedIdx = Math.max(focusedIdx - 1, 0);
+        setFocused(focusedIdx);
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    document.addEventListener('click', (e) => { if (!wrapper.contains(e.target)) close(); });
+  })();
+
+  /* ─── Form fake submit ─── */
+  const form = document.getElementById('bookingForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    if (!name || !phone) {
+      [['f-name', name], ['f-phone', phone]].forEach(([id, v]) => {
+        const f = document.getElementById(id);
+        if (!v) {
+          f.style.borderColor = 'var(--amber)';
+          f.addEventListener('input', () => f.style.borderColor = '', { once: true });
+        }
+      });
+      return;
+    }
+    success.classList.add('show');
+    form.querySelectorAll('input, textarea, select').forEach(el => el.value = el.tagName === 'SELECT' ? el.options[0].value : '');
+    setTimeout(() => success.classList.remove('show'), 6000);
+  });
+
+  /* ─── Smooth scroll offset for sticky nav ─── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  /* ─── Mobile menu ─── */
+  const burger = document.getElementById('navBurger');
+  const mMenu = document.getElementById('mobileMenu');
+  function closeMobileMenu() {
+    mMenu.classList.remove('open');
+    mMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  if (burger) burger.addEventListener('click', () => {
+    mMenu.classList.add('open');
+    mMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+  const mClose = document.getElementById('mobileMenuClose');
+  if (mClose) mClose.addEventListener('click', closeMobileMenu);
+  mMenu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+  /* ─── Services carousel ─── */
+  (function () {
+    const track = document.getElementById('svcTrack');
+    const prevBtn = document.getElementById('svcPrev');
+    const nextBtn = document.getElementById('svcNext');
+    const progressEl = document.getElementById('svcProgress');
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll('.svc-card'));
+    const total = cards.length;
+    if (progressEl) {
+      cards.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = 'svc-progress-dot' + (i === 0 ? ' active' : '');
+        progressEl.appendChild(d);
+      });
+    }
+    function getCardStep() {
+      const c = cards[0];
+      if (!c) return 304;
+      return c.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).gap) || 24);
+    }
+    function currentIdx() {
+      return Math.round(track.scrollLeft / getCardStep());
+    }
+    function updateUI() {
+      const idx = currentIdx();
+      if (prevBtn) prevBtn.disabled = idx <= 0;
+      if (nextBtn) nextBtn.disabled = idx >= total - 1;
+      if (progressEl) {
+        progressEl.querySelectorAll('.svc-progress-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+    }
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+      track.scrollTo({ left: (currentIdx() - 1) * getCardStep(), behavior: 'smooth' });
+    });
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      track.scrollTo({ left: (currentIdx() + 1) * getCardStep(), behavior: 'smooth' });
+    });
+    track.addEventListener('scroll', updateUI, { passive: true });
+    updateUI();
+  })();
+
+  /* ─── Service card "Saber más" accordion ─── */
+  (function () {
+    const track = document.getElementById('svcTrack');
+    if (!track) return;
+    track.addEventListener('click', function (e) {
+      const btn = e.target.closest('.svc-more');
+      if (!btn) return;
+      const card = btn.closest('.svc-card');
+      const expand = card.querySelector('.svc-expand');
+      const arrow = btn.querySelector('.svc-more-arrow');
+      const isOpen = card.classList.contains('open');
+      // close all
+      track.querySelectorAll('.svc-card.open').forEach(c => {
+        c.classList.remove('open');
+        c.querySelector('.svc-expand').setAttribute('aria-hidden', 'true');
+        c.querySelector('.svc-more').setAttribute('aria-expanded', 'false');
+        c.querySelector('.svc-more').innerHTML = 'Saber más <span class="svc-more-arrow">↓</span>';
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        expand.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.innerHTML = 'Cerrar <span class="svc-more-arrow">↓</span>';
+      }
+    });
+  })();
+
+  /* ─── Testimonials carousel + dots ─── */
+  (function () {
+    const track = document.getElementById('testTrack');
+    const dotsEl = document.getElementById('testDots');
+    if (!track || !dotsEl) return;
+    const cards = Array.from(track.children);
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'test-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Reseña ' + (i + 1));
+      d.addEventListener('click', () => {
+        const gap = parseFloat(getComputedStyle(track).gap) || 20;
+        const w = (cards[i].getBoundingClientRect().width || 300) + gap;
+        track.scrollTo({ left: i * w, behavior: 'smooth' });
+      });
+      dotsEl.appendChild(d);
+    });
+    track.addEventListener('scroll', () => {
+      const gap = parseFloat(getComputedStyle(track).gap) || 20;
+      const w = (cards[0].getBoundingClientRect().width || 300) + gap;
+      const idx = Math.min(Math.round(track.scrollLeft / w), cards.length - 1);
+      dotsEl.querySelectorAll('.test-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+    const getW = () => {
+      const gap = parseFloat(getComputedStyle(track).gap) || 20;
+      return (cards[0].getBoundingClientRect().width || 300) + gap;
+    };
+    const p = document.getElementById('testPrev');
+    const n = document.getElementById('testNext');
+    if (p) p.addEventListener('click', () => track.scrollBy({ left: -getW(), behavior: 'smooth' }));
+    if (n) n.addEventListener('click', () => track.scrollBy({ left: getW(), behavior: 'smooth' }));
+  })();
+</script>
+</body>
+</html>
